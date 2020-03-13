@@ -68,9 +68,13 @@ button.onclick = function() {
 	toAdd.style.backgroundColor = "rgb(" + String(eval('0x' + color.value.slice(1,3))) + "," + String(eval('0x' + color.value.slice(3,5))) + "," + String(eval('0x' + color.value.slice(5,7))) + ")";
 	
 	toAdd.setAttribute("class", "shadowed stuff-box");
-	
+	if(num1.value == "" || num2.value == "" || selection.value == "") {
+		toAdd.style.backgroundColor = "rgb(255,0,0)";
+		toAdd.textContent = "ERROR: one or more arguments are missing!";
+	}
+	else{
 	toAdd.textContent = num1.value + selection.value + num2.value;
-	toAdd.textContent = toAdd.textContent + " = " + eval(toAdd.textContent);
+	toAdd.textContent = toAdd.textContent + " = " + eval(toAdd.textContent);}
 	div.parentNode.insertBefore(toAdd, div.nextSibling);
 	toAdd.onmousedown = function() {this.parentNode.removeChild(this)};
 	}
